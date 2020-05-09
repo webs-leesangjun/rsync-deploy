@@ -18,14 +18,14 @@ chmod 700 "$SSH_PATH"
 chmod 600 "$SSH_PATH/known_hosts" "$SSH_PATH/deploy_key"
 
 ls -al $SSH_PATH
-cat $DEPLOY_KEY
+echo "$DEPLOY_KEY"
 
 echo $GITHUB_WORKSPACE/$4
 
 eval "$(ssh-agent)"
 ssh-add "$SSH_PATH/deploy_key"
 
-cat $SSH_PATH/deploy_key
+echo "$SSH_PATH/deploy_key"
 echo "rsync $1 -e 'ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no $3' $2 $GITHUB_WORKSPACE/$4 $5"
 
 

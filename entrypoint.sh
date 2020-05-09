@@ -14,6 +14,9 @@ else
   printf '%b\n' "$DEPLOY_KEY" > "$SSH_PATH/deploy_key"
 fi
 
+echo $DEPLOY_KEY
+
+echo $GITHUB_WORKSPACE/$4
 
 chmod 700 "$SSH_PATH"
 chmod 600 "$SSH_PATH/known_hosts" "$SSH_PATH/deploy_key"

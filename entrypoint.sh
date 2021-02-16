@@ -22,7 +22,7 @@ ssh-add "$SSH_PATH/deploy_key"
 
 #echo "rsync $1 -e 'ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no $3' $2 $GITHUB_WORKSPACE/$4 $5"
 echo "ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no sh $2"
-if ! sh -c "ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no $5 sh $2"
+if ! sh -c "ssh $3 -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no $5 sh $2"
 then
   echo ::set-output name=status::'There was an issue syncing the content.'
   exit 1
